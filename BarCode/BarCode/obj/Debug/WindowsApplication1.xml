@@ -1,0 +1,19 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+WindowsApplication1
+</name>
+</assembly>
+<members>
+<member name="M:WindowsApplication1.BarCodeClass.DrawBarCode(System.String,System.Int32,System.Int32)">
+	<summary>
+ バーコード描画
+ </summary>
+	<param name="Code">Jan桁13</param>
+	<param name="iX">表示したいX座標（左上起点）</param>
+	<param name="iY">表示したいY座標（左上起点）</param>
+	<remarks></remarks>
+</member>
+</members>
+</doc>
