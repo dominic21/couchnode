@@ -28,3 +28,6 @@ C:\Users\barnet\Desktop\program\timecard_old\timecard\obj\Debug\timecard.vbproj.
 C:\Users\barnet\Desktop\program\timecard_old\timecard\bin\Debug\timecard.exe
 C:\Users\barnet\Desktop\program\timecard_old\timecard\bin\Debug\timecard.pdb
 C:\Users\barnet\Desktop\program\timecard_old\timecard\bin\Debug\timecard.xml
+C:\Users\barnet\Desktop\program\git\timecard\timecard\obj\Debug\timecard.exe
+C:\Users\barnet\Desktop\program\git\timecard\timecard\obj\Debug\timecard.xml
+C:\Users\barnet\Desktop\program\git\timecard\timecard\obj\Debug\timecard.pdb
