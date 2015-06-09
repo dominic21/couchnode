@@ -1,0 +1,2189 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Pao.BarCode</name>
+    </assembly>
+    <members>
+        <member name="T:Pao.BarCode.ITF">
+            <summary>
+            ITFバーコードを生成するのに用いられるクラスです。
+            </summary>
+        </member>
+        <member name="T:Pao.BarCode.IBarCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Pao.BarCode.IBarCode.Draw(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Draw a barcode
+            </summary>
+            <param name="code">Set barcode codes by character strings.</param>
+            <param name="x">Set x-coordinate of the drawing start point at upper left.</param>
+            <param name="y">Set y-coordinate of the drawing start point at upper left.</param>
+            <param name="width">Set overall width of the barcode.</param>
+            <param name="height">Set height of the barcode.</param>
+        </member>
+        <member name="M:Pao.BarCode.IBarCode.Draw(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            Draw a barcode
+            draw barcode to image file, when specifying ImageFormat in constructor.
+            </summary>
+            <param name="code">Set barcode codes by character strings.</param>
+            <param name="x">Set x-coordinate of the drawing start point at upper left.</param>
+            <param name="y">Set y-coordinate of the drawing start point at upper left.</param>
+            <param name="width">Set overall width of the barcode.</param>
+            <param name="height">Set height of the barcode.</param>
+            <param name="imageFilePath">image file path</param>
+        </member>
+        <member name="M:Pao.BarCode.IBarCode.DrawDelicate(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            This is to draw a barcode. The difference from Draw methods is that this method is not used to set overall width but the thinnest bar width of barcode.
+            </summary>
+            <param name="code">Set barcode codes by character strings.</param>
+            <param name="x">Set x-coordinate of the drawing start point at upper left.</param>
+            <param name="y">Set y-coordinate of the drawing start point at upper left.</param>
+            <param name="minLineWidth">Set the thinnest bar width of barcode to be drawn.</param>
+            <param name="height">Set height of the barcode.</param>
+        </member>
+        <member name="M:Pao.BarCode.IBarCode.DrawDelicate(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            This is to draw a barcode. The difference from Draw methods is that this method is not used to set overall width but the thinnest bar width of barcode.
+            draw barcode to image file, when specifying ImageFormat in constructor.
+            </summary>
+            <param name="code">Set barcode codes by character strings.</param>
+            <param name="x">Set x-coordinate of the drawing start point at upper left.</param>
+            <param name="y">Set y-coordinate of the drawing start point at upper left.</param>
+            <param name="minLineWidth">Set the thinnest bar width of barcode to be drawn.</param>
+            <param name="height">Set height of the barcode.</param>
+            <param name="imageFilePath">image file path</param>
+        </member>
+        <member name="M:Pao.BarCode.IBarCode.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Barcode is directly drawn within the width set in pixel.
+            Accuracy and speed are better than Draw method, although the width cannot be fixed.
+            </summary>
+            <param name="code">Set barcode codes by character strings.</param>
+            <param name="x">Set x-coordinate of the drawing start point at upper left.</param>
+            <param name="y">Set y-coordinate of the drawing start point at upper left.</param>
+            <param name="width">Set overall width of the barcode.</param>
+            <param name="height">Set height of the barcode.</param>
+        </member>
+        <member name="M:Pao.BarCode.IBarCode.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            Barcode is directly drawn within the width set in pixel.
+            Accuracy and speed are better than Draw method, although the width cannot be fixed.
+            draw barcode to image file, when specifying ImageFormat in constructor.
+            </summary>
+            <param name="code">Set barcode codes by character strings.</param>
+            <param name="x">Set x-coordinate of the drawing start point at upper left.</param>
+            <param name="y">Set y-coordinate of the drawing start point at upper left.</param>
+            <param name="width">Set overall width of the barcode.</param>
+            <param name="height">Set height of the barcode.</param>
+            <param name="imageFilePath">image file path</param>
+        </member>
+        <member name="P:Pao.BarCode.IBarCode.TextWrite">
+            <summary>
+            true if text will be generated along with the barcode
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.IBarCode.TextKintou">
+            <summary>
+            drawing position drawing position (to fit a barcode to set width).
+            true: Draw barcode within an overall width by equal spacing, false: Draw barcode at a bar meaning a code (default)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.IBarCode.TextFont">
+            <summary>
+            the font used in writing text
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.IBarCode.RotateAngle">
+            <summary>
+            barcode angle
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.IBarCode.KuroBarChousei">
+            <summary>
+            number of dot for fine adjustment of black bars.(The defined value of dot is 0.)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.IBarCode.ShiroBarChousei">
+            <summary>
+            number of dot for fine adjustment of white bars.(The defined value of dot is 0.)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.IBarCode.ImgDrawUnit">
+            <summary>
+            Image Draw Unit (use draw to image file)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.IBarCode.ImgDpi">
+            <summary>
+            Image DPI (use draw to image file)
+            </summary>
+        </member>
+        <member name="M:Pao.BarCode.ITF.#ctor(System.Drawing.Graphics)">
+            <summary>
+            コンストラクタ　ITF
+            </summary>
+            <param name="g">バーコードの描画を行うGraphicsを指定します。</param>
+        </member>
+        <member name="M:Pao.BarCode.ITF.#ctor(System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            コンストラクタ
+            ミリやインチ等の単位で幅・高さを指定し、かつ、dpiを指定して
+            バーコードをファイルに書き込むときに使用する
+            </summary>
+            <param name="imgFilePath">画像ファイルパス</param>
+            <param name="imgFormat">画像フォーマット</param>
+        </member>
+        <member name="M:Pao.BarCode.ITF.Draw(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行う
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.ITF.Draw(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードを描画する
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.ITF.DrawDelicate(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行います。Draw メソッドとの違いは、バーコード全体の幅を指定するのではなく、バーを描画する一番細い線の幅を指定します。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="minLineWidth">バーコードを描画するバーの最小幅の値を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.ITF.DrawDelicate(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードの描画を行います。Draw メソッドとの違いは、バーコード全体の幅を指定するのではなく、バーを描画する一番細い線の幅を指定します。
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="minLineWidth">バーコードを描画するバーの最小幅の値を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.ITF.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードを指定した幅以内にピクセル単位でダイレクトに描画します。
+            幅が固定でありませんが、通常のDrawメソッドより精度・描画速度がよいです。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.ITF.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードを指定した幅以内にピクセル単位でダイレクトに描画します。
+            幅が固定でありませんが、通常のDrawメソッドより精度・描画速度がよいです。
+            ※コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.ITF.WriteSVG(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            SVGファイルへのバーコードの出力を行います。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="filePath">SVGファイルのファイル名をフルパスで指定</param>
+        </member>
+        <member name="P:Pao.BarCode.ITF.TextWrite">
+            <summary>
+            TextWrite 添字の描画プロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.ITF.TextKintou">
+            <summary>
+            描画位置設定(バーコード全体の幅に均等割付)プロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.ITF.TextFont">
+            <summary>
+            添字のフォントプロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.ITF.RotateAngle">
+            <summary>
+            回転角度を数値で指定(左下を軸に右回転して描画を行う)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.ITF.DrawScale">
+            <summary>
+            表示倍率を指定(Reports.netで使用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.ITF.KuroBarChousei">
+            <summary>
+            描画する黒バー幅をドット単位で微細調整できます。
+            既定値は、0 ドットです。
+            例えば、このプロパティに-1 を指定すると、バーコード内全ての黒バーの幅が1ドットずつ細くなります。
+            プリンタにより、調整が必要な場合にこの機能を使用してください。
+            ※この機能は。DrawDirect / DrawDelicate メソッドには有効ですが、
+            Draw メソッドには無効ですのでご注意ください。
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.ITF.ShiroBarChousei">
+            <summary>
+            描画する白バー幅をドット単位で微細調整できます。
+            既定値は、0 ドットです。
+            例えば、このプロパティに-1 を指定すると、バーコード内全ての白バーの幅が1ドットずつ細くなります。
+            プリンタにより、調整が必要な場合にこの機能を使用してください。
+            →インクジェットプリンタで黒バーがにじんで太くなる時などに有効
+            例：コンビニバーコード、EPSON PX-502A(360DPI)のプリンタには、
+            　　白バーを＋１してあげると丁度良い。
+            ※この機能は。DrawDirect / DrawDelicate メソッドには有効ですが、
+            Draw メソッドには無効ですのでご注意ください。
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.ITF.ImgDrawUnit">
+            <summary>
+            画像描画単位 (画像ファイル出力用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.ITF.ImgDpi">
+            <summary>
+            画像DPI (画像ファイル出力用)
+            </summary>
+        </member>
+        <member name="T:Pao.BarCode.GS1_128">
+            <summary>
+            GS1-128バーコードを生成するのに用いられるクラスです。(旧 UCC/EAN128)
+            </summary>
+        </member>
+        <member name="T:Pao.BarCode.EAN128">
+            <summary>
+            UCC/EAN128バーコードを生成するのに用いられるクラスです。
+            </summary>
+        </member>
+        <member name="M:Pao.BarCode.EAN128.#ctor(System.Drawing.Graphics)">
+            <summary>
+            コンストラクタ　EAN128
+            </summary>
+            <param name="g">バーコードの描画を行うGraphicsを指定します。</param>
+        </member>
+        <member name="M:Pao.BarCode.EAN128.#ctor(System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            コンストラクタ
+            ミリやインチ等の単位で幅・高さを指定し、かつ、dpiを指定して
+            バーコードをファイルに書き込むときに使用する
+            </summary>
+            <param name="imgFilePath">画像ファイルパス</param>
+            <param name="imgFormat">画像フォーマット</param>
+        </member>
+        <member name="M:Pao.BarCode.EAN128.Draw(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行う
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.EAN128.Draw(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードを描画する
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.EAN128.DrawDelicate(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行います。Draw メソッドとの違いは、バーコード全体の幅を指定するのではなく、バーを描画する一番細い線の幅を指定します。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="minLineWidth">バーコードを描画するバーの最小幅の値を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.EAN128.DrawDelicate(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードの描画を行います。Draw メソッドとの違いは、バーコード全体の幅を指定するのではなく、バーを描画する一番細い線の幅を指定します。
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="minLineWidth">バーコードを描画するバーの最小幅の値を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.EAN128.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードを指定した幅以内にピクセル単位でダイレクトに描画します。
+            幅が固定でありませんが、通常のDrawメソッドより精度・描画速度がよいです。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.EAN128.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードを指定した幅以内にピクセル単位でダイレクトに描画します。
+            幅が固定でありませんが、通常のDrawメソッドより精度・描画速度がよいです。
+            ※コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.EAN128.WriteSVG(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            SVGファイルへのバーコードの出力を行います。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="filePath">SVGファイルのファイル名をフルパスで指定</param>
+        </member>
+        <member name="M:Pao.BarCode.EAN128.DrawConvenience(System.String,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行います。コンビニエンスストアで行う標準料金代理収納用のEAN128を描画します。
+            幅はプリンタのDPIから自動的に算出します。
+            幅指定より速度精度とも良い。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="mmX">描画位置の始点(左上)のX座標をmmで指定</param>
+            <param name="mmY">描画位置の始点(左上)のY座標をmmで指定</param>
+            <param name="mmHeight">バーコードのバーの高さをmmで指定</param>
+        </member>
+        <member name="M:Pao.BarCode.EAN128.DrawConvenience(System.String,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードの描画を行います。コンビニエンスストアで行う標準料金代理収納用のEAN128を描画します。
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            幅はプリンタのDPIから自動的に算出します。
+            幅指定より速度精度とも良い。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="mmX">描画位置の始点(左上)のX座標をmmで指定</param>
+            <param name="mmY">描画位置の始点(左上)のY座標をmmで指定</param>
+            <param name="mmHeight">バーコードのバーの高さをmmで指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.EAN128.DrawConvenience(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行います。コンビニエンスストアで行う標準料金代理収納用のGS1-128を描画します。
+            バーコード幅をパラメータ指定できるので、バーコードの微調整ができますが、
+            パラメータで幅指定しない方が、速度・精度は上です。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="mmX">描画位置の始点(左上)のX座標をmmで指定</param>
+            <param name="mmY">描画位置の始点(左上)のY座標をmmで指定</param>
+            <param name="mmWidth">バーコードのバーの幅を指定</param>
+            <param name="mmHeight">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.EAN128.DrawConvenience(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードの描画を行います。コンビニエンスストアで行う標準料金代理収納用のEAN128を描画します。
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            バーコード幅をパラメータ指定できるので、バーコードの微調整ができますが、
+            パラメータで幅指定しない方が、速度・精度は上です。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="mmX">描画位置の始点(左上)のX座標をmmで指定</param>
+            <param name="mmY">描画位置の始点(左上)のY座標をmmで指定</param>
+            <param name="mmWidth">バーコードのバーの幅を指定</param>
+            <param name="mmHeight">バーコードのバーの高さをmmで指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="P:Pao.BarCode.EAN128.TextWrite">
+            <summary>
+            TextWrite 添字の描画プロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.EAN128.TextKintou">
+            <summary>
+            描画位置設定(バーコード全体の幅に均等割付)プロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.EAN128.TextFont">
+            <summary>
+            添字のフォントプロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.EAN128.RotateAngle">
+            <summary>
+            回転角度を数値で指定(左下を軸に右回転して描画を行う)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.EAN128.DrawScale">
+            <summary>
+            表示倍率を指定(Reports.netで使用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.EAN128.KuroBarChousei">
+            <summary>
+            描画する黒バー幅をドット単位で微細調整できます。
+            既定値は、0 ドットです。
+            例えば、このプロパティに-1 を指定すると、バーコード内全ての黒バーの幅が1ドットずつ細くなります。
+            プリンタにより、調整が必要な場合にこの機能を使用してください。
+            ※この機能は。DrawDirect / DrawDelicate メソッドには有効ですが、
+            Draw メソッドには無効ですのでご注意ください。
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.EAN128.ShiroBarChousei">
+            <summary>
+            描画する白バー幅をドット単位で微細調整できます。
+            既定値は、0 ドットです。
+            例えば、このプロパティに-1 を指定すると、バーコード内全ての白バーの幅が1ドットずつ細くなります。
+            プリンタにより、調整が必要な場合にこの機能を使用してください。
+            →インクジェットプリンタで黒バーがにじんで太くなる時などに有効
+            例：コンビニバーコード、EPSON PX-502A(360DPI)のプリンタには、
+            　　白バーを＋１してあげると丁度良い。
+            ※この機能は。DrawDirect / DrawDelicate メソッドには有効ですが、
+            Draw メソッドには無効ですのでご注意ください。
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.EAN128.ImgDrawUnit">
+            <summary>
+            画像描画単位 (画像ファイル出力用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.EAN128.ImgDpi">
+            <summary>
+            画像DPI (画像ファイル出力用)
+            </summary>
+        </member>
+        <member name="M:Pao.BarCode.GS1_128.#ctor(System.Drawing.Graphics)">
+            <summary>
+            コンストラクタ　EAN128
+            </summary>
+            <param name="g">バーコードの描画を行うGraphicsを指定します。</param>
+        </member>
+        <member name="M:Pao.BarCode.GS1_128.#ctor(System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            コンストラクタ
+            ミリやインチ等の単位で幅・高さを指定し、かつ、dpiを指定して
+            バーコードをファイルに書き込むときに使用する
+            </summary>
+            <param name="imgFilePath">画像ファイルパス</param>
+            <param name="imgFormat">画像フォーマット</param>
+        </member>
+        <member name="T:Pao.BarCode.JAN13">
+            <summary>
+            JANコード(13桁)を生成するのに用いられるclassです。
+            </summary>
+        </member>
+        <member name="M:Pao.BarCode.JAN13.#ctor(System.Drawing.Graphics)">
+            <summary>
+            コンストラクタ　JAN13
+            </summary>
+            <param name="g">バーコードの描画を行うGraphicsを指定します。</param>
+        </member>
+        <member name="M:Pao.BarCode.JAN13.#ctor(System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            コンストラクタ
+            ミリやインチ等の単位で幅・高さを指定し、かつ、dpiを指定して
+            バーコードをファイルに書き込むときに使用する
+            </summary>
+            <param name="imgFilePath">画像ファイルパス</param>
+            <param name="imgFormat">画像フォーマット</param>
+        </member>
+        <member name="M:Pao.BarCode.JAN13.Draw(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行う
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.JAN13.Draw(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードを描画する
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.JAN13.DrawDelicate(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行います。Draw メソッドとの違いは、バーコード全体の幅を指定するのではなく、バーを描画する一番細い線の幅を指定します。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="minLineWidth">バーコードを描画するバーの最小幅の値を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.JAN13.DrawDelicate(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードの描画を行います。Draw メソッドとの違いは、バーコード全体の幅を指定するのではなく、バーを描画する一番細い線の幅を指定します。
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="minLineWidth">バーコードを描画するバーの最小幅の値を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.JAN13.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードを指定した幅以内にピクセル単位でダイレクトに描画します。
+            幅が固定でありませんが、通常のDrawメソッドより精度・描画速度がよいです。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.JAN13.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードを指定した幅以内にピクセル単位でダイレクトに描画します。
+            幅が固定でありませんが、通常のDrawメソッドより精度・描画速度がよいです。
+            ※コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.JAN13.WriteSVG(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            SVGファイルへのバーコードの出力を行います。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="filePath">SVGファイルのファイル名をフルパスで指定</param>
+        </member>
+        <member name="P:Pao.BarCode.JAN13.TextWrite">
+            <summary>
+            TextWrite 添字の描画プロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.JAN13.TextKintou">
+            <summary>
+            描画位置設定(バーコード全体の幅に均等割付)プロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.JAN13.TextFont">
+            <summary>
+            添字のフォントプロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.JAN13.RotateAngle">
+            <summary>
+            回転角度を数値で指定(左下を軸に右回転して描画を行う)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.JAN13.DrawScale">
+            <summary>
+            表示倍率を指定(Reports.netで使用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.JAN13.KuroBarChousei">
+            <summary>
+            描画する黒バー幅をドット単位で微細調整できます。
+            既定値は、0 ドットです。
+            例えば、このプロパティに-1 を指定すると、バーコード内全ての黒バーの幅が1ドットずつ細くなります。
+            プリンタにより、調整が必要な場合にこの機能を使用してください。
+            ※この機能は。DrawDirect / DrawDelicate メソッドには有効ですが、
+            Draw メソッドには無効ですのでご注意ください。
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.JAN13.ShiroBarChousei">
+            <summary>
+            描画する白バー幅をドット単位で微細調整できます。
+            既定値は、0 ドットです。
+            例えば、このプロパティに-1 を指定すると、バーコード内全ての白バーの幅が1ドットずつ細くなります。
+            プリンタにより、調整が必要な場合にこの機能を使用してください。
+            →インクジェットプリンタで黒バーがにじんで太くなる時などに有効
+            例：コンビニバーコード、EPSON PX-502A(360DPI)のプリンタには、
+            　　白バーを＋１してあげると丁度良い。
+            ※この機能は。DrawDirect / DrawDelicate メソッドには有効ですが、
+            Draw メソッドには無効ですのでご注意ください。
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.JAN13.ImgDrawUnit">
+            <summary>
+            画像描画単位 (画像ファイル出力用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.JAN13.ImgDpi">
+            <summary>
+            画像DPI (画像ファイル出力用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.JAN13.ImageWidthIncludeLeftChar">
+            <summary>
+            JAN13の添字は、一番左の文字がバーコードの幅からはみ出ます。
+            このプロパティは、画像ファイルにバーコードを出力する際に指定する
+            (1) バーコードの幅に、左にはみ出る添字の１文字の幅を含めるか、
+            (2) バーコードの幅は、あくまで実際のバーコードの幅で左にはみ出る祖英1文字は含めないか
+            を指定します。
+            既定値は、(1) バーコードの幅に、左にはみ出る添字の１文字の幅を含める = true です。
+            </summary>
+        </member>
+        <member name="T:Pao.BarCode.Common">
+            <summary>
+            Common の概要の説明です。
+            </summary>
+        </member>
+        <member name="T:Pao.BarCode.Code128">
+            <summary>
+            Code128バーコードを生成するのに用いられるクラスです。
+            </summary>
+        </member>
+        <member name="M:Pao.BarCode.Code128.#ctor(System.Drawing.Graphics)">
+            <summary>
+            コンストラクタ　Code128
+            </summary>
+            <param name="g">バーコードの描画を行うGraphicsを指定します。</param>
+        </member>
+        <member name="M:Pao.BarCode.Code128.#ctor(System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            コンストラクタ
+            ミリやインチ等の単位で幅・高さを指定し、かつ、dpiを指定して
+            バーコードをファイルに書き込むときに使用する
+            </summary>
+            <param name="imgFilePath">画像ファイルパス</param>
+            <param name="imgFormat">画像フォーマット</param>
+        </member>
+        <member name="M:Pao.BarCode.Code128.Draw(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行う
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.Code128.Draw(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードを描画する
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.Code128.DrawDelicate(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行います。Draw メソッドとの違いは、バーコード全体の幅を指定するのではなく、バーを描画する一番細い線の幅を指定します。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="minLineWidth">バーコードを描画するバーの最小幅の値を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.Code128.DrawDelicate(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードの描画を行います。Draw メソッドとの違いは、バーコード全体の幅を指定するのではなく、バーを描画する一番細い線の幅を指定します。
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="minLineWidth">バーコードを描画するバーの最小幅の値を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.Code128.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードを指定した幅以内にピクセル単位でダイレクトに描画します。
+            幅が固定でありませんが、通常のDrawメソッドより精度・描画速度がよいです。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.Code128.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードを指定した幅以内にピクセル単位でダイレクトに描画します。
+            幅が固定でありませんが、通常のDrawメソッドより精度・描画速度がよいです。
+            ※コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.Code128.WriteSVG(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            SVGファイルへのバーコードの出力を行います。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="filePath">SVGファイルのファイル名をフルパスで指定</param>
+        </member>
+        <member name="P:Pao.BarCode.Code128.TextWrite">
+            <summary>
+            TextWrite 添字の描画プロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Code128.TextKintou">
+            <summary>
+            描画位置設定(バーコード全体の幅に均等割付)プロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Code128.TextFont">
+            <summary>
+            添字のフォントプロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Code128.RotateAngle">
+            <summary>
+            回転角度を数値で指定(左下を軸に右回転して描画を行う)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Code128.DrawScale">
+            <summary>
+            表示倍率を指定(Reports.netで使用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Code128.KuroBarChousei">
+            <summary>
+            描画する黒バー幅をドット単位で微細調整できます。
+            既定値は、0 ドットです。
+            例えば、このプロパティに-1 を指定すると、バーコード内全ての黒バーの幅が1ドットずつ細くなります。
+            プリンタにより、調整が必要な場合にこの機能を使用してください。
+            ※この機能は。DrawDirect / DrawDelicate メソッドには有効ですが、
+            Draw メソッドには無効ですのでご注意ください。
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Code128.ShiroBarChousei">
+            <summary>
+            描画する白バー幅をドット単位で微細調整できます。
+            既定値は、0 ドットです。
+            例えば、このプロパティに-1 を指定すると、バーコード内全ての白バーの幅が1ドットずつ細くなります。
+            プリンタにより、調整が必要な場合にこの機能を使用してください。
+            →インクジェットプリンタで黒バーがにじんで太くなる時などに有効
+            例：コンビニバーコード、EPSON PX-502A(360DPI)のプリンタには、
+            　　白バーを＋１してあげると丁度良い。
+            ※この機能は。DrawDirect / DrawDelicate メソッドには有効ですが、
+            Draw メソッドには無効ですのでご注意ください。
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Code128.ImgDrawUnit">
+            <summary>
+            画像描画単位 (画像ファイル出力用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Code128.ImgDpi">
+            <summary>
+            画像DPI (画像ファイル出力用)
+            </summary>
+        </member>
+        <member name="T:Pao.BarCode.CheckDigit">
+            <summary>
+            各種チェックデジットの算出を行うライブラリーです。
+            </summary>
+        </member>
+        <member name="M:Pao.BarCode.CheckDigit.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:Pao.BarCode.CheckDigit.Modulus10W3(System.String)">
+            <summary>
+            モジュラス10 ウエイト3 のチェックデジットの計算
+            </summary>
+            <param name="data">チェックデジットを除いた文字列</param>
+            <returns>チェックデジット</returns>
+        </member>
+        <member name="M:Pao.BarCode.CheckDigit.Modulus103W1(System.String)">
+            <summary>
+            モジュラス103 ウエイト1 のチェックデジットの計算
+            </summary>
+            <param name="data">チェックデジットを除いた文字列</param>
+            <returns>チェックデジット</returns>
+        </member>
+        <member name="M:Pao.BarCode.CheckDigit.Modulus103W1_EAN128(System.String)">
+            <summary>
+            モジュラス103 ウエイト1(UCC/EAN128用) のチェックデジットの計算
+            </summary>
+            <param name="data">チェックデジットを除いた文字列</param>
+            <returns>チェックデジット</returns>
+        </member>
+        <member name="T:Pao.BarCode.YubinCustomer">
+            <summary>
+            郵便カスタマーバーコードを生成するのに用いられるクラスです。
+            </summary>
+        </member>
+        <member name="M:Pao.BarCode.YubinCustomer.#ctor(System.Drawing.Graphics)">
+            <summary>
+            コンストラクタ　YubinCustomer
+            </summary>
+            <param name="g">バーコードの描画を行うGraphicsを指定します。</param>
+        </member>
+        <member name="M:Pao.BarCode.YubinCustomer.#ctor(System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            コンストラクタ
+            ミリやインチ等の単位で幅・高さを指定し、かつ、dpiを指定して
+            バーコードをファイルに書き込むときに使用する
+            </summary>
+            <param name="imgFilePath">画像ファイルパス</param>
+            <param name="imgFormat">画像フォーマット</param>
+        </member>
+        <member name="M:Pao.BarCode.YubinCustomer.Draw(System.String,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行う
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="point">バーコード大きさを表すポイントを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.YubinCustomer.Draw(System.String,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードの描画を行う
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="point">バーコード大きさを表すポイントを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.YubinCustomer.WriteSVG(System.String,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードの描画を行う
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="point">バーコード大きさを表すポイントを指定</param>
+            <param name="filePath">SVGファイルのファイル名をフルパスで指定</param>
+        </member>
+        <member name="P:Pao.BarCode.YubinCustomer.KuroBarChousei">
+            <summary>
+            描画する黒バー幅をドット単位で微細調整できます。
+            既定値は、0 ドットです。
+            例えば、このプロパティに-1 を指定すると、バーコード内全ての黒バーの幅が1ドットずつ細くなります。
+            プリンタにより、調整が必要な場合にこの機能を使用してください。
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.YubinCustomer.RotateAngle">
+            <summary>
+            回転角度を数値で指定(左下を軸に右回転して描画を行う)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.YubinCustomer.DrawScale">
+            <summary>
+            表示倍率を指定(Reports.netで使用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.YubinCustomer.ImgDpi">
+            <summary>
+            画像DPI (画像ファイル出力用)
+            </summary>
+        </member>
+        <member name="T:Pao.BarCode.NW7">
+            <summary>
+            Codabar/NW7バーコードを生成するのに用いられるクラスです。
+            </summary>
+        </member>
+        <member name="M:Pao.BarCode.NW7.#ctor(System.Drawing.Graphics)">
+            <summary>
+            コンストラクタ　NW7
+            </summary>
+            <param name="g">バーコードの描画を行うGraphicsを指定します。</param>
+        </member>
+        <member name="M:Pao.BarCode.NW7.#ctor(System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            コンストラクタ
+            ミリやインチ等の単位で幅・高さを指定し、かつ、dpiを指定して
+            バーコードをファイルに書き込むときに使用する
+            </summary>
+            <param name="imgFilePath">画像ファイルパス</param>
+            <param name="imgFormat">画像フォーマット</param>
+        </member>
+        <member name="M:Pao.BarCode.NW7.Draw(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行う
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.NW7.Draw(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードを描画する
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.NW7.DrawDelicate(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行います。Draw メソッドとの違いは、バーコード全体の幅を指定するのではなく、バーを描画する一番細い線の幅を指定します。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="minLineWidth">バーコードを描画するバーの最小幅の値を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.NW7.DrawDelicate(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードの描画を行います。Draw メソッドとの違いは、バーコード全体の幅を指定するのではなく、バーを描画する一番細い線の幅を指定します。
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="minLineWidth">バーコードを描画するバーの最小幅の値を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.NW7.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードを指定した幅以内にピクセル単位でダイレクトに描画します。
+            幅が固定でありませんが、通常のDrawメソッドより精度・描画速度がよいです。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.NW7.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードを指定した幅以内にピクセル単位でダイレクトに描画します。
+            幅が固定でありませんが、通常のDrawメソッドより精度・描画速度がよいです。
+            ※コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.NW7.WriteSVG(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            SVGファイルへのバーコードの出力を行います。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="filePath">SVGファイルのファイル名をフルパスで指定</param>
+        </member>
+        <member name="P:Pao.BarCode.NW7.TextWrite">
+            <summary>
+            TextWrite 添字の描画プロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.NW7.TextKintou">
+            <summary>
+            描画位置設定(バーコード全体の幅に均等割付)プロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.NW7.TextFont">
+            <summary>
+            添字のフォントプロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.NW7.RotateAngle">
+            <summary>
+            回転角度を数値で指定(左下を軸に右回転して描画を行う)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.NW7.DrawScale">
+            <summary>
+            表示倍率を指定(Reports.netで使用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.NW7.DispStartStopCode">
+            <summary>
+            スタート／ストップコードの描画プロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.NW7.KuroBarChousei">
+            <summary>
+            描画する黒バー幅をドット単位で微細調整できます。
+            既定値は、0 ドットです。
+            例えば、このプロパティに-1 を指定すると、バーコード内全ての黒バーの幅が1ドットずつ細くなります。
+            プリンタにより、調整が必要な場合にこの機能を使用してください。
+            ※この機能は。DrawDirect / DrawDelicate メソッドには有効ですが、
+            Draw メソッドには無効ですのでご注意ください。
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.NW7.ShiroBarChousei">
+            <summary>
+            描画する白バー幅をドット単位で微細調整できます。
+            既定値は、0 ドットです。
+            例えば、このプロパティに-1 を指定すると、バーコード内全ての白バーの幅が1ドットずつ細くなります。
+            プリンタにより、調整が必要な場合にこの機能を使用してください。
+            →インクジェットプリンタで黒バーがにじんで太くなる時などに有効
+            例：コンビニバーコード、EPSON PX-502A(360DPI)のプリンタには、
+            　　白バーを＋１してあげると丁度良い。
+            ※この機能は。DrawDirect / DrawDelicate メソッドには有効ですが、
+            Draw メソッドには無効ですのでご注意ください。
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.NW7.ImgDrawUnit">
+            <summary>
+            画像描画単位 (画像ファイル出力用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.NW7.ImgDpi">
+            <summary>
+            画像DPI (画像ファイル出力用)
+            </summary>
+        </member>
+        <member name="T:Pao.BarCode.NEC2of5">
+            <summary>
+            NEC 2 of 5 バーコードを生成するのに用いられるクラスです。
+            </summary>
+        </member>
+        <member name="M:Pao.BarCode.NEC2of5.#ctor(System.Drawing.Graphics)">
+            <summary>
+            コンストラクタ　NEC2of5
+            </summary>
+            <param name="g">バーコードの描画を行うGraphicsを指定します。</param>
+        </member>
+        <member name="M:Pao.BarCode.NEC2of5.#ctor(System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            コンストラクタ
+            ミリやインチ等の単位で幅・高さを指定し、かつ、dpiを指定して
+            バーコードをファイルに書き込むときに使用する
+            </summary>
+            <param name="imgFilePath">画像ファイルパス</param>
+            <param name="imgFormat">画像フォーマット</param>
+        </member>
+        <member name="M:Pao.BarCode.NEC2of5.Draw(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行う
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.NEC2of5.Draw(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードを描画する
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.NEC2of5.DrawDelicate(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行います。Draw メソッドとの違いは、バーコード全体の幅を指定するのではなく、バーを描画する一番細い線の幅を指定します。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="minLineWidth">バーコードを描画するバーの最小幅の値を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.NEC2of5.DrawDelicate(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードの描画を行います。Draw メソッドとの違いは、バーコード全体の幅を指定するのではなく、バーを描画する一番細い線の幅を指定します。
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="minLineWidth">バーコードを描画するバーの最小幅の値を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.NEC2of5.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードを指定した幅以内にピクセル単位でダイレクトに描画します。
+            幅が固定でありませんが、通常のDrawメソッドより精度・描画速度がよいです。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.NEC2of5.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードを指定した幅以内にピクセル単位でダイレクトに描画します。
+            幅が固定でありませんが、通常のDrawメソッドより精度・描画速度がよいです。
+            ※コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.NEC2of5.WriteSVG(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            SVGファイルへのバーコードの出力を行います。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="filePath">SVGファイルのファイル名をフルパスで指定</param>
+        </member>
+        <member name="P:Pao.BarCode.NEC2of5.TextWrite">
+            <summary>
+            TextWrite 添字の描画プロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.NEC2of5.TextKintou">
+            <summary>
+            描画位置設定(バーコード全体の幅に均等割付)プロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.NEC2of5.TextFont">
+            <summary>
+            添字のフォントプロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.NEC2of5.RotateAngle">
+            <summary>
+            回転角度を数値で指定(左下を軸に右回転して描画を行う)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.NEC2of5.DrawScale">
+            <summary>
+            表示倍率を指定(Reports.netで使用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.NEC2of5.KuroBarChousei">
+            <summary>
+            描画する黒バー幅をドット単位で微細調整できます。
+            既定値は、0 ドットです。
+            例えば、このプロパティに-1 を指定すると、バーコード内全ての黒バーの幅が1ドットずつ細くなります。
+            プリンタにより、調整が必要な場合にこの機能を使用してください。
+            ※この機能は。DrawDirect / DrawDelicate メソッドには有効ですが、
+            Draw メソッドには無効ですのでご注意ください。
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.NEC2of5.ShiroBarChousei">
+            <summary>
+            描画する白バー幅をドット単位で微細調整できます。
+            既定値は、0 ドットです。
+            例えば、このプロパティに-1 を指定すると、バーコード内全ての白バーの幅が1ドットずつ細くなります。
+            プリンタにより、調整が必要な場合にこの機能を使用してください。
+            →インクジェットプリンタで黒バーがにじんで太くなる時などに有効
+            例：コンビニバーコード、EPSON PX-502A(360DPI)のプリンタには、
+            　　白バーを＋１してあげると丁度良い。
+            ※この機能は。DrawDirect / DrawDelicate メソッドには有効ですが、
+            Draw メソッドには無効ですのでご注意ください。
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.NEC2of5.ImgDrawUnit">
+            <summary>
+            画像描画単位 (画像ファイル出力用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.NEC2of5.ImgDpi">
+            <summary>
+            画像DPI (画像ファイル出力用)
+            </summary>
+        </member>
+        <member name="T:Pao.BarCode.Matrix2of5">
+            <summary>
+            Matrix 2 of 5 バーコードを生成するのに用いられるクラスです。
+            </summary>
+        </member>
+        <member name="M:Pao.BarCode.Matrix2of5.#ctor(System.Drawing.Graphics)">
+            <summary>
+            コンストラクタ　Matrix2of5
+            </summary>
+            <param name="g">バーコードの描画を行うGraphicsを指定します。</param>
+        </member>
+        <member name="M:Pao.BarCode.Matrix2of5.#ctor(System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            コンストラクタ
+            ミリやインチ等の単位で幅・高さを指定し、かつ、dpiを指定して
+            バーコードをファイルに書き込むときに使用する
+            </summary>
+            <param name="imgFilePath">画像ファイルパス</param>
+            <param name="imgFormat">画像フォーマット</param>
+        </member>
+        <member name="M:Pao.BarCode.Matrix2of5.Draw(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行う
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.Matrix2of5.Draw(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードを描画する
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.Matrix2of5.DrawDelicate(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行います。Draw メソッドとの違いは、バーコード全体の幅を指定するのではなく、バーを描画する一番細い線の幅を指定します。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="minLineWidth">バーコードを描画するバーの最小幅の値を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.Matrix2of5.DrawDelicate(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードの描画を行います。Draw メソッドとの違いは、バーコード全体の幅を指定するのではなく、バーを描画する一番細い線の幅を指定します。
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="minLineWidth">バーコードを描画するバーの最小幅の値を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.Matrix2of5.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードを指定した幅以内にピクセル単位でダイレクトに描画します。
+            幅が固定でありませんが、通常のDrawメソッドより精度・描画速度がよいです。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.Matrix2of5.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードを指定した幅以内にピクセル単位でダイレクトに描画します。
+            幅が固定でありませんが、通常のDrawメソッドより精度・描画速度がよいです。
+            ※コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.Matrix2of5.WriteSVG(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            SVGファイルへのバーコードの出力を行います。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="filePath">SVGファイルのファイル名をフルパスで指定</param>
+        </member>
+        <member name="P:Pao.BarCode.Matrix2of5.TextWrite">
+            <summary>
+            TextWrite 添字の描画プロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Matrix2of5.TextKintou">
+            <summary>
+            描画位置設定(バーコード全体の幅に均等割付)プロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Matrix2of5.TextFont">
+            <summary>
+            添字のフォントプロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Matrix2of5.RotateAngle">
+            <summary>
+            回転角度を数値で指定(左下を軸に右回転して描画を行う)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Matrix2of5.DrawScale">
+            <summary>
+            表示倍率を指定(Reports.netで使用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Matrix2of5.KuroBarChousei">
+            <summary>
+            描画する黒バー幅をドット単位で微細調整できます。
+            既定値は、0 ドットです。
+            例えば、このプロパティに-1 を指定すると、バーコード内全ての黒バーの幅が1ドットずつ細くなります。
+            プリンタにより、調整が必要な場合にこの機能を使用してください。
+            ※この機能は。DrawDirect / DrawDelicate メソッドには有効ですが、
+            Draw メソッドには無効ですのでご注意ください。
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Matrix2of5.ShiroBarChousei">
+            <summary>
+            描画する白バー幅をドット単位で微細調整できます。
+            既定値は、0 ドットです。
+            例えば、このプロパティに-1 を指定すると、バーコード内全ての白バーの幅が1ドットずつ細くなります。
+            プリンタにより、調整が必要な場合にこの機能を使用してください。
+            →インクジェットプリンタで黒バーがにじんで太くなる時などに有効
+            例：コンビニバーコード、EPSON PX-502A(360DPI)のプリンタには、
+            　　白バーを＋１してあげると丁度良い。
+            ※この機能は。DrawDirect / DrawDelicate メソッドには有効ですが、
+            Draw メソッドには無効ですのでご注意ください。
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Matrix2of5.ImgDrawUnit">
+            <summary>
+            画像描画単位 (画像ファイル出力用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Matrix2of5.ImgDpi">
+            <summary>
+            画像DPI (画像ファイル出力用)
+            </summary>
+        </member>
+        <member name="T:Pao.BarCode.errCode39BadChar">
+            <summary>
+            Error の概要の説明です。
+            </summary>
+        </member>
+        <member name="T:Pao.BarCode.QRCode">
+            <summary>
+            QRコードを生成するのに用いられるクラスです。
+            </summary>
+        </member>
+        <member name="M:Pao.BarCode.QRCode.#ctor(System.Drawing.Graphics)">
+            <summary>
+            コンストラクタ　QRCode
+            </summary>
+            <param name="g">バーコードの描画を行うGraphicsを指定します。</param>
+        </member>
+        <member name="M:Pao.BarCode.QRCode.#ctor(System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            コンストラクタ
+            ミリやインチ等の単位で幅・高さを指定し、かつ、dpiを指定して
+            バーコードをファイルに書き込むときに使用する
+            </summary>
+            <param name="imgFilePath">画像ファイルパス</param>
+            <param name="imgFormat">画像フォーマット</param>
+        </member>
+        <member name="M:Pao.BarCode.QRCode.SetStructureAppend(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            連結関連のメソッドです。
+            (試験導入です。)
+            </summary>
+        </member>
+        <member name="M:Pao.BarCode.QRCode.CalStructureappendParity(System.Byte[])">
+            <summary>
+            連結に用いるパリティを算出します。
+            (試験導入です。)
+            </summary>
+        </member>
+        <member name="M:Pao.BarCode.QRCode.Draw(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行う
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.QRCode.Draw(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードを描画する
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.QRCode.DrawDelicate(System.String,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行う
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="minLinePitch">バーコードを描画する間隔の最小幅の値を指定</param>
+        </member>
+        <member name="M:Pao.BarCode.QRCode.DrawDelicate(System.String,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードの描画を行います。Draw メソッドとの違いは、バーコード全体の幅を指定するのではなく、バーを描画する一番細い線の幅を指定します。
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="minLinePitch">バーコードを描画するバーの最小ピッチの値を指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.QRCode.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードを指定した幅以内にピクセル単位でダイレクトに描画します。
+            幅が固定でありませんが、通常のDrawメソッドより精度・描画速度がよいです。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.QRCode.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードを指定した幅以内にピクセル単位でダイレクトに描画します。
+            幅が固定でありませんが、通常のDrawメソッドより精度・描画速度がよいです。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.QRCode.WriteSVG(System.String,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            SVGファイルへのバーコードの出力を行います。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="minLinePitch">バーコードを描画する間隔の最小幅の値を指定</param>
+            <param name="filePath">SVGファイルのファイル名をフルパスで指定</param>
+        </member>
+        <member name="P:Pao.BarCode.QRCode.ErrorCorrect">
+            <summary>
+            エラー訂正レベル
+            <c> "L"</c>
+            <c> "M"</c>
+            <c> "Q"</c>
+            <c> "H"</c>
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.QRCode.Version">
+            <summary>
+            バージョン
+            <c> 1～40</c>
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.QRCode.EncodeMode">
+            <summary>
+            エンコードモード
+            <c>　"N":数字のみ</c>
+            <c>　"A":英数字のみ</c>
+            <c>　その他("Z"):8ビットバイトコード(漢字含む)</c>
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.QRCode.RotateAngle">
+            <summary>
+            回転角度を数値で指定(左下を軸に右回転して描画を行う)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.QRCode.DrawScale">
+            <summary>
+            表示倍率を指定(Reports.netで使用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.QRCode.ImgDrawUnit">
+            <summary>
+            画像描画単位 (画像ファイル出力用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.QRCode.ImgDpi">
+            <summary>
+            画像DPI (画像ファイル出力用)
+            </summary>
+        </member>
+        <member name="T:Pao.BarCode.Code39">
+            <summary>
+            Code39バーコードを生成するのに用いられるクラスです。
+            </summary>
+        </member>
+        <member name="M:Pao.BarCode.Code39.#ctor(System.Drawing.Graphics)">
+            <summary>
+            コンストラクタ　Code39
+            </summary>
+            <param name="g">バーコードの描画を行うGraphicsを指定します。</param>
+        </member>
+        <member name="M:Pao.BarCode.Code39.#ctor(System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            コンストラクタ
+            ミリやインチ等の単位で幅・高さを指定し、かつ、dpiを指定して
+            バーコードをファイルに書き込むときに使用する
+            </summary>
+            <param name="imgFilePath">画像ファイルパス</param>
+            <param name="imgFormat">画像フォーマット</param>
+        </member>
+        <member name="M:Pao.BarCode.Code39.Draw(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行う
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.Code39.Draw(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードを描画する
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.Code39.DrawDelicate(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行います。Draw メソッドとの違いは、バーコード全体の幅を指定するのではなく、バーを描画する一番細い線の幅を指定します。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="minLineWidth">バーコードを描画するバーの最小幅の値を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.Code39.DrawDelicate(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードの描画を行います。Draw メソッドとの違いは、バーコード全体の幅を指定するのではなく、バーを描画する一番細い線の幅を指定します。
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="minLineWidth">バーコードを描画するバーの最小幅の値を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.Code39.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードを指定した幅以内にピクセル単位でダイレクトに描画します。
+            幅が固定でありませんが、通常のDrawメソッドより精度・描画速度がよいです。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.Code39.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードを指定した幅以内にピクセル単位でダイレクトに描画します。
+            幅が固定でありませんが、通常のDrawメソッドより精度・描画速度がよいです。
+            ※コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.Code39.WriteSVG(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            SVGファイルへのバーコードの出力を行います。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="filePath">SVGファイルのファイル名をフルパスで指定</param>
+        </member>
+        <member name="P:Pao.BarCode.Code39.TextWrite">
+            <summary>
+            TextWrite 添字の描画プロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Code39.TextKintou">
+            <summary>
+            描画位置設定(バーコード全体の幅に均等割付)プロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Code39.TextFont">
+            <summary>
+            添字のフォントプロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Code39.RotateAngle">
+            <summary>
+            回転角度を数値で指定(左下を軸に右回転して描画を行う)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Code39.DrawScale">
+            <summary>
+            表示倍率を指定(Reports.netで使用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Code39.DispStartStopCode">
+            <summary>
+            スタート／ストップコードの描画プロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Code39.KuroBarChousei">
+            <summary>
+            描画する黒バー幅をドット単位で微細調整できます。
+            既定値は、0 ドットです。
+            例えば、このプロパティに-1 を指定すると、バーコード内全ての黒バーの幅が1ドットずつ細くなります。
+            プリンタにより、調整が必要な場合にこの機能を使用してください。
+            ※この機能は。DrawDirect / DrawDelicate メソッドには有効ですが、
+            Draw メソッドには無効ですのでご注意ください。
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Code39.ShiroBarChousei">
+            <summary>
+            描画する白バー幅をドット単位で微細調整できます。
+            既定値は、0 ドットです。
+            例えば、このプロパティに-1 を指定すると、バーコード内全ての白バーの幅が1ドットずつ細くなります。
+            プリンタにより、調整が必要な場合にこの機能を使用してください。
+            →インクジェットプリンタで黒バーがにじんで太くなる時などに有効
+            例：コンビニバーコード、EPSON PX-502A(360DPI)のプリンタには、
+            　　白バーを＋１してあげると丁度良い。
+            ※この機能は。DrawDirect / DrawDelicate メソッドには有効ですが、
+            Draw メソッドには無効ですのでご注意ください。
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Code39.ImgDrawUnit">
+            <summary>
+            画像描画単位 (画像ファイル出力用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.Code39.ImgDpi">
+            <summary>
+            画像DPI (画像ファイル出力用)
+            </summary>
+        </member>
+        <member name="T:Pao.BarCode.PmSvgAttr">
+            <summary>
+            Reportで使用するXML属性名を宣言する
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.ObjectName">
+            <summary>
+            名称を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.SizeW">
+            <summary>
+            サイズを表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.StartX">
+            <summary>
+            X座標を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.StartY">
+            <summary>
+            Y座標を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.EndX">
+            <summary>
+            X座標を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.EndY">
+            <summary>
+            Y座標を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Color">
+            <summary>
+            色を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Style">
+            <summary>
+            線種を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.X">
+            <summary>
+            X座標を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Y">
+            <summary>
+            Y座標を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Width">
+            <summary>
+            幅を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Height">
+            <summary>
+            高さを表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Angle">
+            <summary>
+            回転角度を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.BackColor">
+            <summary>
+            背景色を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.PaintColor">
+            <summary>
+            塗り潰し色を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Density">
+            <summary>
+            網掛けを表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Text">
+            <summary>
+            文字列を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Elastic">
+            <summary>
+            伸縮自在を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.OutLineWidth">
+            <summary>
+            アウトライン幅を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.OutLineColor">
+            <summary>
+            アウトライン色を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Align">
+            <summary>
+            四角形の中の位置を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Reverse">
+            <summary>
+            四角形の中の位置を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.R">
+            <summary>
+            丸さを表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.TL">
+            <summary>
+            左上角を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.TR">
+            <summary>
+            右上角を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.BL">
+            <summary>
+            左下角を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.BR">
+            <summary>
+            右下角を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Thick">
+            <summary>
+            円弧の厚みを表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Kind">
+            <summary>
+            バーコード種類を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Code">
+            <summary>
+            コードを表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Soeji">
+            <summary>
+            添字表示を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Kintou">
+            <summary>
+            均等割付を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.StartStop">
+            <summary>
+            スタート・ストップコード付加を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Point">
+            <summary>
+            郵便カスタマバーコードのポイントを表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.QrVersion">
+            <summary>
+            QRコードのバージョンを表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.QrErrCorrect">
+            <summary>
+            QRコードのエラー訂正レベルを表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.ImageSizeType">
+            <summary>
+            画像の拡大・縮小を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Agree">
+            <summary>
+            Yes/Noを表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.IntervalX">
+            <summary>
+            X座標の間隔を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.IntervalY">
+            <summary>
+            Y座標の間隔を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Italic">
+            <summary>
+            イタリックを表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Bold">
+            <summary>
+            ボールドを表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Underline">
+            <summary>
+            アンダーラインを表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.FontName">
+            <summary>
+            フォント名を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.FontSize">
+            <summary>
+            フォントサイズを表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Strikeout">
+            <summary>
+            取り消し線を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Unit">
+            <summary>
+            高さの単位を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Index">
+            <summary>
+            Indexを表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.AttrName">
+            <summary>
+            属性名を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Pos">
+            <summary>
+            位置を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Pattern">
+            <summary>
+            パターンを表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.FontAttr">
+            <summary>
+            フォントを表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.LineAttr">
+            <summary>
+            罫線を表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.HatchAttr">
+            <summary>
+            網掛けを表す属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Drawing">
+            <summary>
+            描画属性
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.Repeat">
+            <summary>
+            繰返し回数
+            </summary>
+        </member>
+        <member name="F:Pao.BarCode.PmSvgAttr.name_">
+            <summary>
+            XML属性名
+            </summary>
+        </member>
+        <member name="M:Pao.BarCode.PmSvgAttr.#ctor(System.String)">
+            <summary>
+            指定された属性名を持つPmSvgAttrオブジェクトを構築する
+            </summary>
+            <param name="name">属性名</param>
+        </member>
+        <member name="P:Pao.BarCode.PmSvgAttr.Name">
+            <summary>
+            属性名を取得する
+            </summary>
+        </member>
+        <member name="T:Pao.BarCode.JAN8">
+            <summary>
+            JANコード(8桁)を生成するのに用いられるクラスです。
+            </summary>
+        </member>
+        <member name="M:Pao.BarCode.JAN8.#ctor(System.Drawing.Graphics)">
+            <summary>
+            コンストラクタ　JAN8
+            </summary>
+            <param name="g">バーコードの描画を行うGraphicsを指定します。</param>
+        </member>
+        <member name="M:Pao.BarCode.JAN8.#ctor(System.String,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            コンストラクタ
+            ミリやインチ等の単位で幅・高さを指定し、かつ、dpiを指定して
+            バーコードをファイルに書き込むときに使用する
+            </summary>
+            <param name="imgFilePath">画像ファイルパス</param>
+            <param name="imgFormat">画像フォーマット</param>
+        </member>
+        <member name="M:Pao.BarCode.JAN8.Draw(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行う
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.JAN8.Draw(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードを描画する
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.JAN8.DrawDelicate(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードの描画を行います。Draw メソッドとの違いは、バーコード全体の幅を指定するのではなく、バーを描画する一番細い線の幅を指定します。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="minLineWidth">バーコードを描画するバーの最小幅の値を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.JAN8.DrawDelicate(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードの描画を行います。Draw メソッドとの違いは、バーコード全体の幅を指定するのではなく、バーを描画する一番細い線の幅を指定します。
+            コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="minLineWidth">バーコードを描画するバーの最小幅の値を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.JAN8.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            バーコードを指定した幅以内にピクセル単位でダイレクトに描画します。
+            幅が固定でありませんが、通常のDrawメソッドより精度・描画速度がよいです。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+        </member>
+        <member name="M:Pao.BarCode.JAN8.DrawDirect(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            バーコードを指定した幅以内にピクセル単位でダイレクトに描画します。
+            幅が固定でありませんが、通常のDrawメソッドより精度・描画速度がよいです。
+            ※コンストラクタでImageFormat指定時、画像ファイルに描画する。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="imgFilePath">画像ファイルパス</param>
+        </member>
+        <member name="M:Pao.BarCode.JAN8.WriteSVG(System.String,System.Single,System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            SVGファイルへのバーコードの出力を行います。
+            </summary>
+            <param name="code">描画を行うバーコードのコードを文字列で指定</param>
+            <param name="x">描画位置の始点(左上)のX座標を指定</param>
+            <param name="y">描画位置の始点(左上)のY座標を指定</param>
+            <param name="width">バーコードの全体の幅を指定</param>
+            <param name="height">バーコードのバーの高さを指定</param>
+            <param name="filePath">SVGファイルのファイル名をフルパスで指定</param>
+        </member>
+        <member name="P:Pao.BarCode.JAN8.TextWrite">
+            <summary>
+            TextWrite 添字の描画プロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.JAN8.TextKintou">
+            <summary>
+            描画位置設定(バーコード全体の幅に均等割付)プロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.JAN8.TextFont">
+            <summary>
+            添字のフォントプロパティ
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.JAN8.RotateAngle">
+            <summary>
+            回転角度を数値で指定(左下を軸に右回転して描画を行う)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.JAN8.DrawScale">
+            <summary>
+            表示倍率を指定(Reports.netで使用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.JAN8.KuroBarChousei">
+            <summary>
+            描画する黒バー幅をドット単位で微細調整できます。
+            既定値は、0 ドットです。
+            例えば、このプロパティに-1 を指定すると、バーコード内全ての黒バーの幅が1ドットずつ細くなります。
+            プリンタにより、調整が必要な場合にこの機能を使用してください。
+            ※この機能は。DrawDirect / DrawDelicate メソッドには有効ですが、
+            Draw メソッドには無効ですのでご注意ください。
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.JAN8.ShiroBarChousei">
+            <summary>
+            描画する白バー幅をドット単位で微細調整できます。
+            既定値は、0 ドットです。
+            例えば、このプロパティに-1 を指定すると、バーコード内全ての白バーの幅が1ドットずつ細くなります。
+            プリンタにより、調整が必要な場合にこの機能を使用してください。
+            →インクジェットプリンタで黒バーがにじんで太くなる時などに有効
+            例：コンビニバーコード、EPSON PX-502A(360DPI)のプリンタには、
+            　　白バーを＋１してあげると丁度良い。
+            ※この機能は。DrawDirect / DrawDelicate メソッドには有効ですが、
+            Draw メソッドには無効ですのでご注意ください。
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.JAN8.ImgDrawUnit">
+            <summary>
+            画像描画単位 (画像ファイル出力用)
+            </summary>
+        </member>
+        <member name="P:Pao.BarCode.JAN8.ImgDpi">
+            <summary>
+            画像DPI (画像ファイル出力用)
+            </summary>
+        </member>
+    </members>
+</doc>

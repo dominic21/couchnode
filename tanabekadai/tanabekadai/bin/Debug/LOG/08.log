@@ -1,0 +1,181 @@
+2015/06/08 12:35:15.545	ClassLogWrite.New		---------------   LogWrite Start   ---------------
+2015/06/08 12:35:17.927	FormloginTextBoxStaff_PreviewKeyDown		SELECT終了
+2015/06/08 12:35:18.810	FormloginButtonStart_Click		開始ボタン押下 社員名高橋　達
+2015/06/08 12:35:19.757	MenuFormButtonBook_Click		書籍マスタ管理画面押下
+2015/06/08 12:35:19.932	BookMstFirstSetting		初期設定終了
+2015/06/08 12:35:21.907	BookMstButtonList_Click		一覧押下
+2015/06/08 12:35:22.072	BookListBookList_Load		初期設定
+2015/06/08 12:35:22.308	BookListDgvLoad		設定内容
+分類：-- 分類検索 --
+状態：-- 状態検索 --
+検索ワード：
+2015/06/08 12:35:23.377	BookListButtonreturn_Click		戻る押下
+2015/06/08 12:35:25.825	BookMstButtonReturn_Click		戻る押下
+2015/06/08 12:35:26.844	MenuFormButtonInstore_Click		インストアコード生成押下
+2015/06/08 12:35:28.282	InStoreCodeButtonSignup_Click		インストアコード生成 : 2000000000411
+2015/06/08 12:35:28.301	BookMstFirstSetting		初期設定終了
+2015/06/08 12:35:28.303	BookMstIsbnCodeSetting		SELECT終了 :2000000000411
+2015/06/08 12:37:00.267	BookMstButtonSignUp_Click		登録完了 SQLINSERT INTO BOOK_MST VALUES('2000000000411', 'オラクルパフォーマンスチューニング', '第2版', '05', '001', '03', '0', '無し', SYSDATE, SYSDATE)
+2015/06/08 12:37:01.688	BookMstButtonList_Click		一覧押下
+2015/06/08 12:37:01.818	BookListBookList_Load		初期設定
+2015/06/08 12:37:01.828	BookListDgvLoad		設定内容
+分類：-- 分類検索 --
+状態：-- 状態検索 --
+検索ワード：
+2015/06/08 12:37:09.551	BookListButtonreturn_Click		戻る押下
+2015/06/08 12:37:15.663	BookMstButtonReturn_Click		戻る押下
+2015/06/08 12:37:16.848	MenuFormButtonInstore_Click		インストアコード生成押下
+2015/06/08 12:37:17.643	InStoreCodeButtonSignup_Click		インストアコード生成 : 2000000000428
+2015/06/08 12:37:17.660	BookMstFirstSetting		初期設定終了
+2015/06/08 12:37:17.660	BookMstIsbnCodeSetting		SELECT終了 :2000000000428
+2015/06/08 12:37:40.336	BookMstButtonReturn_Click		戻る押下
+2015/06/08 12:37:43.028	MenuFormButtonShelf_Click		棚マスタ押下
+2015/06/08 12:37:45.876	ShelfMstTextBoxStage_TextChanged		棚No: 123段No: 1
+2015/06/08 12:37:46.044	ShelfMstTextBoxStage_TextChanged		棚No: 123段No: 12
+2015/06/08 12:37:47.585	ShelfMstTextBoxStage_TextChanged		棚No: 123段No: 1
+2015/06/08 12:37:47.801	ShelfMstTextBoxStage_TextChanged		棚No: 123段No: 14
+2015/06/08 12:37:48.163	ShelfMstTextBoxStage_TextChanged		棚No: 123段No: 1
+2015/06/08 12:37:51.428	ShelfMstTextBoxShelf_TextChanged		棚No: 12段No: 1
+2015/06/08 12:37:51.783	ShelfMstTextBoxShelf_TextChanged		棚No: 1段No: 1
+2015/06/08 12:37:54.315	ShelfMstTextBoxShelf_TextChanged		棚No: 01段No: 1
+2015/06/08 12:37:54.479	ShelfMstTextBoxShelf_TextChanged		棚No: 001段No: 1
+2015/06/08 12:37:56.644	ShelfMstTextBoxStage_TextChanged		棚No: 001段No: 01
+2015/06/08 12:38:06.943	ShelfMstButtonReturn_Click		戻る押下
+2015/06/08 12:38:08.282	MenuFormButtonClassification_Click		分類マスタ押下
+2015/06/08 12:38:18.711	ClassificationMstButtonReturn_Click		戻る押下
+2015/06/08 12:38:25.284	MenuFormButtonRental_Click		貸出処理画面押下
+2015/06/08 12:38:29.938	RentalIsbnDisplay		ISBNCD内容表示1111111111111
+2015/06/08 12:38:35.583	RentalButtonRental_Click		貸出処理失敗      INSERT INTO　RENTAL_MNG (ISBN_CD, RENTALS_DATE, SYAIN_CD, ORDER_NO)        VALUES ('1111111111111', SYSDATE, '0004', SYSDATE)
+            UPDATE BOOK_MST SET RENTAL_STATUS = '1'      UPDATE_DATE = SYSDATE WHERE ISBN_CD = '1111111111111'
+2015/06/08 12:38:39.903	RentalButtonRental_Click		貸出処理失敗      INSERT INTO　RENTAL_MNG (ISBN_CD, RENTALS_DATE, SYAIN_CD, ORDER_NO)        VALUES ('1111111111111', SYSDATE, '0001', SYSDATE)
+            UPDATE BOOK_MST SET RENTAL_STATUS = '1'      UPDATE_DATE = SYSDATE WHERE ISBN_CD = '1111111111111'
+2015/06/08 12:38:41.278	RentalButtonReturn_Click		戻る押下
+2015/06/08 12:38:42.161	MenuFormButtonRental_Click		貸出処理画面押下
+2015/06/08 12:38:42.984	RentalButtonHistry_Click		一覧押下
+2015/06/08 12:38:48.335	RentalHistryButton3_Click		戻る押下
+2015/06/08 12:38:51.943	RentalIsbnDisplay		ISBNCD内容表示1111111111112
+2015/06/08 12:38:52.720	RentalIsbnDisplay		ISBNCD内容表示1111111111111
+2015/06/08 12:38:53.441	RentalIsbnDisplay		ISBNCD内容表示1111111111113
+2015/06/08 12:38:57.219	RentalButtonRental_Click		返却処理        UPDATE RENTAL_MNG SET RENTALE_DATE = SYSDATE, ORDER_NO = SYSDATE  WHERE ISBN_CD = '1111111111113'              AND RENTALE_DATE IS NULL
+ UPDATE BOOK_MST SET RENTAL_STATUS = '0',        UPDATE_DATE = SYSDATE  WHERE ISBN_CD = '1111111111113'
+2015/06/08 12:38:58.146	RentalIsbnDisplay		ISBNCD内容表示1111111111113
+2015/06/08 12:39:00.470	RentalButtonRental_Click		貸出処理失敗      INSERT INTO　RENTAL_MNG (ISBN_CD, RENTALS_DATE, SYAIN_CD, ORDER_NO)        VALUES ('1111111111113', SYSDATE, '0003', SYSDATE)
+            UPDATE BOOK_MST SET RENTAL_STATUS = '1'      UPDATE_DATE = SYSDATE WHERE ISBN_CD = '1111111111113'
+2015/06/08 12:39:01.501	RentalButtonReturn_Click		戻る押下
+2015/06/08 12:39:01.951	MenuFormButtonReturn_Click		戻る押下
+2015/06/08 12:39:02.880	ClassLogWrite.Finalize		---------------   LogWrite END   ---------------
+2015/06/08 12:41:38.062	ClassLogWrite.New		---------------   LogWrite Start   ---------------
+2015/06/08 12:41:40.181	FormloginTextBoxStaff_PreviewKeyDown		SELECT終了
+2015/06/08 12:41:40.911	FormloginButtonStart_Click		開始ボタン押下 社員名高橋　達
+2015/06/08 12:41:41.459	MenuFormButtonRental_Click		貸出処理画面押下
+2015/06/08 12:41:43.130	RentalIsbnDisplay		ISBNCD内容表示1111111111111
+2015/06/08 12:43:49.724	ClassLogWrite.New		---------------   LogWrite Start   ---------------
+2015/06/08 12:43:51.271	FormloginTextBoxStaff_PreviewKeyDown		SELECT終了
+2015/06/08 12:43:52.082	FormloginButtonStart_Click		開始ボタン押下 社員名高橋　達
+2015/06/08 12:43:52.634	MenuFormButtonRental_Click		貸出処理画面押下
+2015/06/08 12:43:54.423	RentalIsbnDisplay		ISBNCD内容表示1111111111111
+2015/06/08 12:43:59.177	RentalIsbnDisplay		ISBNCD内容表示1111111111111
+2015/06/08 12:43:59.177	RentalButtonRental_Click		貸出処理      INSERT INTO　RENTAL_MNG (ISBN_CD, RENTALS_DATE, SYAIN_CD, ORDER_NO)        VALUES ('1111111111111', SYSDATE, '0002', SYSDATE)
+            UPDATE BOOK_MST SET RENTAL_STATUS = '1',      UPDATE_DATE = SYSDATE WHERE ISBN_CD = '1111111111111'
+2015/06/08 12:44:05.176	RentalButtonRental_Click		返却処理        UPDATE RENTAL_MNG SET RENTALE_DATE = SYSDATE, ORDER_NO = SYSDATE  WHERE ISBN_CD = '1111111111111'              AND RENTALE_DATE IS NULL
+ UPDATE BOOK_MST SET RENTAL_STATUS = '0',        UPDATE_DATE = SYSDATE  WHERE ISBN_CD = '1111111111111'
+2015/06/08 12:44:05.952	RentalIsbnDisplay		ISBNCD内容表示1111111111111
+2015/06/08 12:44:07.482	RentalIsbnDisplay		ISBNCD内容表示1111111111111
+2015/06/08 12:44:07.482	RentalButtonRental_Click		貸出処理      INSERT INTO　RENTAL_MNG (ISBN_CD, RENTALS_DATE, SYAIN_CD, ORDER_NO)        VALUES ('1111111111111', SYSDATE, '0007', SYSDATE)
+            UPDATE BOOK_MST SET RENTAL_STATUS = '1',      UPDATE_DATE = SYSDATE WHERE ISBN_CD = '1111111111111'
+2015/06/08 12:44:08.788	RentalButtonHistry_Click		一覧押下
+2015/06/08 12:44:37.610	RentalHistryButtonSearch_Click		検索開始 : ISBNCD : 分類 : オラクル状態 : 返却済
+2015/06/08 12:44:39.404	RentalHistryButtonSearch_Click		検索開始 : ISBNCD : 分類 : 小説状態 : 返却済
+2015/06/08 12:44:43.354	RentalHistryButton3_Click		戻る押下
+2015/06/08 12:44:44.090	RentalButtonReturn_Click		戻る押下
+2015/06/08 12:44:48.933	MenuFormButtonBook_Click		書籍マスタ管理画面押下
+2015/06/08 12:44:48.985	BookMstFirstSetting		初期設定終了
+2015/06/08 12:44:55.395	BookMstButtonList_Click		一覧押下
+2015/06/08 12:44:55.533	BookListBookList_Load		初期設定
+2015/06/08 12:44:55.552	BookListDgvLoad		設定内容
+分類：-- 分類検索 --
+状態：-- 状態検索 --
+検索ワード：
+2015/06/08 12:45:06.937	BookListButtonreturn_Click		戻る押下
+2015/06/08 12:45:31.274	BookMstIsbnCodeSetting		SELECT終了 :2000000000411
+2015/06/08 12:45:38.274	BookMstButtonDelete_Click		削除押下
+2015/06/08 12:45:38.307	BookMstButtonDelete_Click		Delete完了2000000000411
+2015/06/08 12:45:41.576	BookMstButtonReturn_Click		戻る押下
+2015/06/08 12:45:47.346	MenuFormButtonReturn_Click		戻る押下
+2015/06/08 12:45:48.455	FormloginButton2_Click		終了ボタン押下
+2015/06/08 12:45:48.461	ClassLogWrite.Finalize		---------------   LogWrite END   ---------------
+2015/06/08 05:15:46.437	ClassLogWrite.New		---------------   LogWrite Start   ---------------
+2015/06/08 05:15:49.693	FormloginTextBoxStaff_PreviewKeyDown		SELECT終了
+2015/06/08 05:15:50.488	FormloginButtonStart_Click		開始ボタン押下 社員名: 高橋　達
+2015/06/08 05:15:51.238	MenuFormButtonBook_Click		書籍マスタ管理画面押下
+2015/06/08 05:15:51.394	BookMstFirstSetting		初期設定終了
+2015/06/08 05:15:53.666	BookMstIsbnCodeSetting		SELECT終了 :1111111111111
+2015/06/08 05:20:28.389	ClassLogWrite.New		---------------   LogWrite Start   ---------------
+2015/06/08 05:20:30.044	FormloginTextBoxStaff_PreviewKeyDown		SELECT終了
+2015/06/08 05:20:30.824	FormloginButtonStart_Click		開始ボタン押下 社員名: 高橋　達
+2015/06/08 05:20:31.798	MenuFormButtonBook_Click		書籍マスタ管理画面押下
+2015/06/08 05:20:31.860	BookMstFirstSetting		初期設定終了
+2015/06/08 05:20:33.477	BookMstIsbnCodeSetting		SELECT終了 :1111111111111
+2015/06/08 05:21:06.845	ClassLogWrite.New		---------------   LogWrite Start   ---------------
+2015/06/08 05:21:08.296	FormloginTextBoxStaff_PreviewKeyDown		SELECT終了
+2015/06/08 05:21:09.018	FormloginButtonStart_Click		開始ボタン押下 社員名: 高橋　達
+2015/06/08 05:21:09.613	MenuFormButtonBook_Click		書籍マスタ管理画面押下
+2015/06/08 05:21:09.670	BookMstFirstSetting		初期設定終了
+2015/06/08 05:21:11.548	BookMstIsbnCodeSetting		SELECT終了 :1111111111111
+2015/06/08 05:21:40.790	ClassLogWrite.New		---------------   LogWrite Start   ---------------
+2015/06/08 05:21:42.323	FormloginTextBoxStaff_PreviewKeyDown		SELECT終了
+2015/06/08 05:21:43.161	FormloginButtonStart_Click		開始ボタン押下 社員名: 高橋　達
+2015/06/08 05:21:44.050	MenuFormButtonBook_Click		書籍マスタ管理画面押下
+2015/06/08 05:21:44.107	BookMstFirstSetting		初期設定終了
+2015/06/08 05:21:46.123	BookMstIsbnCodeSetting		SELECT終了 :1111111111111
+2015/06/08 05:21:54.330	BookMstButtonSignUp_Click		更新完了 SQL : UPDATE BOOK_MST SET BOOK1_NAME = 'コンビニ', BOOK2_NAME = 'ファミレス', BUNRUI_CD = '01', TANA_NO = '001', DAN_NO = '02', RENTAL_STATUS = '0', BIKO = '回転', UPDATE_DATE = SYSDATE WHERE ISBN_CD = '1111111111111'
+2015/06/08 05:21:57.513	BookMstIsbnCodeSetting		SELECT終了 :1111111111112
+2015/06/08 05:21:58.062	BookMstIsbnCodeSetting		SELECT終了 :1111111111111
+2015/06/08 05:22:03.362	BookMstButtonSignUp_Click		更新完了 SQL : UPDATE BOOK_MST SET BOOK1_NAME = 'コンビニ', BOOK2_NAME = 'ファミレス', BUNRUI_CD = '01', TANA_NO = '001', DAN_NO = '01', RENTAL_STATUS = '0', BIKO = '回転', UPDATE_DATE = SYSDATE WHERE ISBN_CD = '1111111111111'
+2015/06/08 05:27:46.093	ClassLogWrite.New		---------------   LogWrite Start   ---------------
+2015/06/08 05:27:52.077	FormloginTextBoxStaff_PreviewKeyDown		SELECT終了
+2015/06/08 05:27:53.004	FormloginButtonStart_Click		開始ボタン押下 社員名: 高橋　達
+2015/06/08 05:28:06.391	MenuFormButtonBook_Click		書籍マスタ管理画面押下
+2015/06/08 05:28:06.453	BookMstFirstSetting		初期設定終了
+2015/06/08 05:28:09.129	BookMstIsbnCodeSetting		SELECT終了 :1111111111111
+2015/06/08 05:29:12.180	ClassLogWrite.New		---------------   LogWrite Start   ---------------
+2015/06/08 05:29:13.907	FormloginButton2_Click		終了ボタン押下
+2015/06/08 05:29:13.922	ClassLogWrite.Finalize		---------------   LogWrite END   ---------------
+2015/06/08 05:30:31.116	ClassLogWrite.New		---------------   LogWrite Start   ---------------
+2015/06/08 05:30:32.443	FormloginTextBoxStaff_PreviewKeyDown		SELECT終了
+2015/06/08 05:30:33.241	FormloginButtonStart_Click		開始ボタン押下 社員名: 高橋　達
+2015/06/08 05:30:38.025	MenuFormButtonReturn_Click		戻る押下
+2015/06/08 05:30:40.672	FormloginButtonStart_Click		開始ボタン押下 社員名: 高橋　達
+2015/06/08 05:30:41.773	MenuFormButtonReturn_Click		戻る押下
+2015/06/08 05:30:42.230	FormloginButtonStart_Click		開始ボタン押下 社員名: 高橋　達
+2015/06/08 05:30:42.672	MenuFormButtonReturn_Click		戻る押下
+2015/06/08 05:30:43.113	FormloginButtonStart_Click		開始ボタン押下 社員名: 高橋　達
+2015/06/08 05:30:43.528	MenuFormButtonReturn_Click		戻る押下
+2015/06/08 05:30:43.977	FormloginButtonStart_Click		開始ボタン押下 社員名: 高橋　達
+2015/06/08 05:30:44.688	MenuFormButtonReturn_Click		戻る押下
+2015/06/08 05:30:45.112	FormloginButtonStart_Click		開始ボタン押下 社員名: 高橋　達
+2015/06/08 05:30:45.824	MenuFormButtonReturn_Click		戻る押下
+2015/06/08 05:30:46.280	FormloginButtonStart_Click		開始ボタン押下 社員名: 高橋　達
+2015/06/08 05:30:47.856	MenuFormButtonReturn_Click		戻る押下
+2015/06/08 05:30:48.432	FormloginButtonStart_Click		開始ボタン押下 社員名: 高橋　達
+2015/06/08 05:30:49.096	MenuFormButtonReturn_Click		戻る押下
+2015/06/08 05:30:49.525	FormloginButtonStart_Click		開始ボタン押下 社員名: 高橋　達
+2015/06/08 05:30:50.013	MenuFormButtonReturn_Click		戻る押下
+2015/06/08 05:30:50.541	FormloginButtonStart_Click		開始ボタン押下 社員名: 高橋　達
+2015/06/08 05:30:51.037	MenuFormButtonReturn_Click		戻る押下
+2015/06/08 05:30:51.744	FormloginButtonStart_Click		開始ボタン押下 社員名: 高橋　達
+2015/06/08 05:30:52.360	MenuFormButtonReturn_Click		戻る押下
+2015/06/08 05:30:53.072	FormloginButtonStart_Click		開始ボタン押下 社員名: 高橋　達
+2015/06/08 05:30:54.088	MenuFormButtonReturn_Click		戻る押下
+2015/06/08 05:30:55.096	FormloginButtonStart_Click		開始ボタン押下 社員名: 高橋　達
+2015/06/08 05:30:56.835	MenuFormButtonBook_Click		書籍マスタ管理画面押下
+2015/06/08 05:30:56.890	BookMstFirstSetting		初期設定終了
+2015/06/08 05:30:57.885	BookMstButtonReturn_Click		戻る押下
+2015/06/08 05:30:59.500	ClassLogWrite.Finalize		---------------   LogWrite END   ---------------
+2015/06/08 05:51:01.212	ClassLogWrite.New		---------------   LogWrite Start   ---------------
+2015/06/08 05:51:02.925	FormloginTextBoxStaff_PreviewKeyDown		SELECT終了
+2015/06/08 05:51:03.713	FormloginButtonStart_Click		開始ボタン押下 社員名: 高橋　達
+2015/06/08 05:51:04.474	MenuFormButtonBook_Click		書籍マスタ管理画面押下
+2015/06/08 05:51:04.534	BookMstFirstSetting		初期設定終了
+2015/06/08 05:51:06.216	BookMstIsbnCodeSetting		SELECT終了 :1111111111111
+2015/06/08 05:51:18.752	BookMstButtonSignUp_Click		更新失敗 SQL : UPDATE BOOK_MST SET BOOK1_NAME = 'コンビニ', BOOK2_NAME = 'ファミレス', BUNRUI_CD = '01', TANA_NO = '001', DAN_NO = '02', RENTAL_STATUS = '0', BIKO = '回転', UPDATE_DATE = SYSDATE WHERE ISBN_CD = '1111111111111' DDL_LOCK_TIMEOUT = 15

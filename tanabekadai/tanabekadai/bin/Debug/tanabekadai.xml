@@ -1,0 +1,253 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+tanabekadai
+</name>
+</assembly>
+<members>
+<member name="M:WindowsApplication1.ClassLogWrite.WriteLog(System.String,System.String)">
+	<summary>
+ WriteLogJob追加
+ </summary>
+	<param name="name">実行した場所 str</param>
+	<param name="message">Logに書き込む内容 str</param>
+	<remarks></remarks>
+</member><member name="P:WindowsApplication1.ClassOraOdp.Connect">
+	<summary>
+接続状態プロパティ 
+ </summary>
+	<value></value>
+	<returns>Boolean オープン:True クローズ:False</returns>
+	<remarks></remarks>
+</member><member name="P:WindowsApplication1.ClassOraOdp.sErrMessage">
+	<summary>
+ オラクルエラーメッセージプロパティ
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassOraOdp.Login">
+	<summary>
+ ログイン設定
+ </summary>
+	<returns>bool メソッドが全て実行されたらTrue</returns>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassOraOdp.ReLogin">
+	<summary>
+ 再ログインスレッド設定
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassOraOdp.LoginAgain">
+	<summary>
+ ReLoginから呼び出されるログインループ
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassOraOdp.DisConnect">
+	<summary>
+ 切断設定
+ </summary>
+	<returns>bool メソッドが全て実行されたらTrue</returns>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassOraOdp.OraDgvSetting(System.String)">
+	<summary>
+ テーブル取得
+ </summary>
+	<param name="sSQL">SQLコマンド</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassOraOdp.OraCmdExecute(System.String)">
+	<summary>
+ SQL実行
+ </summary>
+	<param name="sCmdSql">str SQL文</param>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassOraOdp.GetDBReader(System.String)">
+	<summary>
+ DBReader取得
+ </summary>
+	<param name="sOraCmd"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassOraOdp.GetDBList(System.String,System.String)">
+	<summary>
+ DB配列取得（列）Readerで良くない？
+ </summary>
+	<returns>1次配列str</returns>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassOraOdp.GetStrValue(System.String)">
+	<summary>
+ DB値取得
+ </summary>
+	<param name="sOraCmd">str 役職名</param>
+	<returns>str セレクトした値</returns>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassOraOdp.TransactionStart">
+	<summary>
+ トランザクション
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassOraOdp.OraCommit">
+	<summary>
+ コミット
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassOraOdp.OraRollBack">
+	<summary>
+ ロールバック
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.BookMst.InitPro">
+	<summary>
+ 各プロパティ初期化
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.BookMst.ButtonDelete_Click(System.Object,System.EventArgs)">
+	<summary>
+ 削除ボタン押下
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.BookList.BookList_Load(System.Object,System.EventArgs)">
+	<summary>
+ フォームロード時設定
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.BookList.ButtonSearch_Click(System.Object,System.EventArgs)">
+	<summary>
+ 検索ボタン押下
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.BookList.Buttonreturn_Click(System.Object,System.EventArgs)">
+	<summary>
+ 戻るボタン押下
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.BookList.TextBoxISBNCDSearch_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+	<summary>
+ テキストボックスでのエンター押下設定
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.BookList.DgvLoad">
+	<summary>
+ データグリッドビュー更新
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.BookList.ButtonPrint_Click(System.Object,System.EventArgs)">
+	<summary>
+ 印刷ボタン押下
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.BookList.PrintDocument1_PrintPage(System.Object,System.Drawing.Printing.PrintPageEventArgs)">
+	<summary>
+ 印刷設定
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassBarCode.#ctor(System.Drawing.Graphics)">
+	<summary>
+ コンストラクタ
+ </summary>
+	<param name="g">描画したいGraphicsオブジェクト System.Drawing.Graphics</param>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassBarCode.DrawBarCode(System.String,System.Int32,System.Int32,System.Int32,System.Int32)">
+	<summary>
+ バーコード描画
+ </summary>
+	<param name="Code">Jan桁13 String</param>
+	<param name="iX">表示したいX座標,記述無しなら0（左上起点）Int</param>
+	<param name="iY">表示したいY座標,記述無しなら0（左上起点）Int</param>
+	<param name="Width">バーコードの幅、記述無しなら113 Int</param>
+	<param name="Height">バーコードの高さ、記述無しなら69 Int</param>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassBarCode.CheckDrawBarCode(System.String,System.Int32,System.Int32,System.Int32,System.Int32)">
+	<summary>
+ チェックディジット有バーコード描画
+ </summary>
+	<param name="Code">Jan桁13 String</param>
+	<param name="iX">表示したいX座標,記述無しなら0（左上起点）Int</param>
+	<param name="iY">表示したいY座標,記述無しなら0（左上起点）Int</param>
+	<param name="Width">バーコードの幅、記述無しなら113 Int</param>
+	<param name="Height">バーコードの高さ、記述無しなら69 Int</param>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassBarCode.DrawBarCodeLine(System.String,System.Int32,System.Int32,System.Int32,System.Int32)">
+	<summary>
+ バーコード線描画
+ </summary>
+	<param name="Code">Jan桁13 String</param>
+	<param name="iX">表示したいX座標 Int</param>
+	<param name="iY">表示したいY座標 Int</param>
+	<param name="Width">バーコードの幅 Int</param>
+	<param name="Height">バーコードの高さ Int</param>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassBarCode.JANCheckDigit(System.String)">
+	<summary>
+ チェックディジット検査
+ </summary>
+	<param name="Code">JAN13桁 String</param>
+	<returns>Bool True or False</returns>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassBarCode.Margin(System.Int32)">
+	<summary>
+ クワイエットゾーン描画
+ </summary>
+	<param name="Width">幅指定 Int</param>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassBarCode.GuardBar">
+	<summary>
+ ガードバー描画
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassBarCode.CenterBar">
+	<summary>
+ センターバー描画
+ </summary>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassBarCode.LeftDrawCode(System.String)">
+	<summary>
+ JAN左キャラクタ描画
+ </summary>
+	<param name="Code">JAN13桁 String</param>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassBarCode.RightDrawCode(System.String)">
+	<summary>
+ JAN右キャラクタ描画
+ </summary>
+	<param name="Code">JAN13桁 String</param>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.ClassBarCode.SplitDigit(System.String)">
+	<summary>
+ キャラクタの描画法則
+ </summary>
+	<param name="Codex">キャラクタ１つ String</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.RentalHistry.ButtonPrint_Click(System.Object,System.EventArgs)">
+	<summary>
+ 印刷ボタン押下
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member><member name="M:WindowsApplication1.RentalHistry.PrintDocument1_PrintPage(System.Object,System.Drawing.Printing.PrintPageEventArgs)">
+	<summary>
+ 印刷設定
+ </summary>
+	<param name="sender"></param>
+	<param name="e"></param>
+	<remarks></remarks>
+</member>
+</members>
+</doc>
