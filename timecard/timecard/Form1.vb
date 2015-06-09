@@ -1127,7 +1127,7 @@
             iDateTimes = 0
             iNameTimes = 0
             iSumTimes = 0
-            '入力ファイルに何かが入っていたら実行()
+            '入力ファイルに何かが入っていたら実行()()
 
             If NyuuFileTxt.Text <> "" Then
 
