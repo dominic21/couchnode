@@ -27,5 +27,6 @@ app.get('/list/delete/:id', function(req,res){
 });
 app.get('/list', index_post.list);
 app.post('/', index_post.index);
+app.post('/list', index_post.searchlist);
 
 app.listen(8080);

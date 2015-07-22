@@ -4,8 +4,8 @@ html
 		meta(charset='UTF-8')
 		title= title
 	body
-		-
-			function alert(id){
+		script.
+			function deletealert(id){
 				var res = confirm("本当に消していいですか？");
 				if(res){
 					window.location = ("/list/delete/" + id)
@@ -14,6 +14,31 @@ html
 		div(Align='center')
 			h1= title
 			p
+		form(method='post', action='/list')
+			table(border='0')
+				tr
+					td
+						label 検索
+				tr
+					td
+					td
+						label 表題
+					td
+						label 作業者
+					td
+						label 内容
+				tr
+					td
+					td
+						input(type='text', name='search_title', size='10')
+					td
+						input(type='text', name='search_worker', size='10')
+					td
+						input(type='text', name='search_content', size='10')
+					td
+						input(type='submit',value='検索')
+		p
+		div(Align='center')
 			table(border='1')
 				tr
 					td
@@ -32,4 +57,4 @@ html
 							a(href="/list/" + json.id)!= json.value[1]
 						td
 							//a(href="/list/delete/" + json.id) 削除
-							input(type='button',value='削除' onclick='alert(json.id)')
+							input(type='button',value='削除' onclick="deletealert(#{json.id})")

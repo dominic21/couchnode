@@ -1,9 +1,6 @@
 var couchbase = require('couchbase');
-var cluster = new couchbase.Cluster('couchbase://192.168.21.201:8091');
+var cluster = new couchbase.Cluster('couchbase://10.0.1.143:8091');
 require('date-utils')
-
-//var bucket = cluster.openBucket('Daily_work_report');
-//var bucket = cluster.openBucket('beer-sample');
 var bucket = cluster.openBucket('default');
 
 exports.index = function(req,res){
@@ -39,6 +36,8 @@ exports.index = function(req,res){
 	bucket.counter('id',Incremental,function(err,res){
 		if(err){
 		console.log(err);
+		res.render('err', {title: 'エラー'});
+		return;
 		}else{
 			var Key = res.value;
 			var dt = new Date();
@@ -52,7 +51,7 @@ exports.index = function(req,res){
 			
 			//一回見に行かないと履歴に表示されない（なぜ？）
 			var ViewQuery = couchbase.ViewQuery;
-			var query = ViewQuery.from('listtest', 'list_json');
+			var query = ViewQuery.from('ServiceReportHistory', 'view_ServiceReport');
 			bucket.query(query, function (err, res, meta){
 			});
 		});
@@ -69,7 +68,7 @@ exports.index = function(req,res){
 exports.list = function(req,resp){
 	var ViewQuery = couchbase.ViewQuery;
 	//order 1=昇順 2=降順
-	var query = ViewQuery.from('listtest', 'list_json').order(2);
+	var query = ViewQuery.from('ServiceReportHistory', 'view_ServiceReport').order(2);
 	var jsonarray = new Array();
 	bucket.query(query, function (err, res, meta) {
     	if (err) {
@@ -113,6 +112,7 @@ exports.deletelist = function(id,resp){
 	bucket.remove(id,function(err,res){
 		if(err){
 			console.log('remove failed', err);
+			res.render('err', {title: 'エラー'});
 			return;
 		}
 		console.log('success!',res);
@@ -136,12 +136,17 @@ exports.createid = function(){
 	});
 };
 
-/*
-exports.serchlist = function(){
+exports.searchlist = function(req,resp){
 	var ViewQuery = couchbase.ViewQuery;
 	//order 1=昇順 2=降順
-	var query = ViewQuery.from('listtest', 'list_json').order(2);
+	var query = ViewQuery.from('ServiceReportHistory', 'view_ServiceReport').order(2);
 	var jsonarray = new Array();
+	var searchtitle = req.body.search_title;
+	var searchworker = req.body.search_worker;
+	var searchcontent = new RegExp(req.body.search_content, "i");
+	var arraynum = 0;
+	console.log('searchtitle' + searchcontent);
+	
 	bucket.query(query, function (err, res, meta) {
     	if (err) {
         	console.error('View query failed:', err);
@@ -151,19 +156,19 @@ exports.serchlist = function(){
     	console.log('Found', meta.total_rows, 'results:', res);
     	
     	for(var i = 0; i < res.length; i++){
-    		if(){
+    		if(res[i].value[1].indexOf(searchtitle) >= 0 && res[i].value[0].indexOf(searchworker) >= 0 && res[i].value[2].match(searchcontent) != null){
+    			
     			var json = {
     			id: res[i].id,
     			create_date: res[i].key,
     			value: res[i].value
     			};
-    		
-    			jsonarray[i] = json;
+    			jsonarray[arraynum] = json;
+    			arraynum++;
     		}
-    	};
+    	}
     		console.log('Createjson');
     		console.log(jsonarray);
 			resp.render('list', {title: '履歴', histry: jsonarray});
 	});
 };
-*/
