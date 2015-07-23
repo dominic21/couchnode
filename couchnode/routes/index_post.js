@@ -1,6 +1,9 @@
 var couchbase = require('couchbase');
-var cluster = new couchbase.Cluster('couchbase://10.0.1.143:8091');
+var cluster = new couchbase.Cluster('couchbase://192.168.21.201:8091');
 require('date-utils')
+
+//var bucket = cluster.openBucket('Daily_work_report');
+//var bucket = cluster.openBucket('beer-sample');
 var bucket = cluster.openBucket('default');
 
 exports.index = function(req,res){
@@ -51,7 +54,7 @@ exports.index = function(req,res){
 			
 			//一回見に行かないと履歴に表示されない（なぜ？）
 			var ViewQuery = couchbase.ViewQuery;
-			var query = ViewQuery.from('ServiceReportHistory', 'view_ServiceReport');
+			var query = ViewQuery.from('listtest', 'list_json');
 			bucket.query(query, function (err, res, meta){
 			});
 		});
@@ -68,7 +71,7 @@ exports.index = function(req,res){
 exports.list = function(req,resp){
 	var ViewQuery = couchbase.ViewQuery;
 	//order 1=昇順 2=降順
-	var query = ViewQuery.from('ServiceReportHistory', 'view_ServiceReport').order(2);
+	var query = ViewQuery.from('listtest', 'list_json').order(2);
 	var jsonarray = new Array();
 	bucket.query(query, function (err, res, meta) {
     	if (err) {
@@ -136,10 +139,11 @@ exports.createid = function(){
 	});
 };
 
+
 exports.searchlist = function(req,resp){
 	var ViewQuery = couchbase.ViewQuery;
 	//order 1=昇順 2=降順
-	var query = ViewQuery.from('ServiceReportHistory', 'view_ServiceReport').order(2);
+	var query = ViewQuery.from('listtest', 'list_json').order(2);
 	var jsonarray = new Array();
 	var searchtitle = req.body.search_title;
 	var searchworker = req.body.search_worker;
